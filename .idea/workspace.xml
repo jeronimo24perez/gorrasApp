@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4a0e40c-5d12-4b75-bb0c-feb0fbf9ca2b" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../../pyunal/conecta-4v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/product.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +128,7 @@
       <workItem from="1774114493215" duration="4040000" />
       <workItem from="1774309524889" duration="1279000" />
       <workItem from="1774315106757" duration="1605000" />
-      <workItem from="1774371365020" duration="1568000" />
+      <workItem from="1774371365020" duration="4196000" />
     </task>
     <servers />
   </component>

@@ -36,46 +36,53 @@ const Product = ({usersGet})=>{
     return (
         state?
 
-        <>
-            {user?
-                <>
-                    {user.car.map((item) => {
-                        if (item.productId === id) {
-                            fineAdition = true;
-                        }
-                    })}
-                </>
-            :
-                <></>
+            <>
+                {user ?
+                    <>
+                        {user.car.map((item) => {
+                            if (item.productId === id) {
+                                fineAdition = true;
+                            }
+                        })}
+                    </>
+                    :
+                    <></>
 
-            }
-            
-            <Menu usersGet={usersGet} />
-            <div className={"container bg-dark text-light p-4 rounded-5 d-flex flex-wrap justify-content-center align-items-center mb-3 mt-3"} >
-                <Link to={product.img}> <img src={product.img} className="rounded-5 card-hover cursor-pointer " alt="product"/></Link>
-                <h2 className="text-center w-100"> {product.name}</h2>
-                <p className=" w-100 text-center "> <b>Precio: </b> ${product.price} COP</p><br/>
-                <button type="button" className="btn bg-custom me-5 border-light-subtle" >Comprar</button>
-                {fineAdition?  <button className="btn border-light ml-5 bg-custom">agregado</button> :  <button className="btn border-light ml-5 bg-custom" onClick={()=>{
-                /*    fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            compra: product._id,
-                            cantidad: 1
-                        })
-                    }).then(res=>res.json()).then(res=> console.log(res)).catch(err => console.log(err));
-                    setTimeout(()=>{
-                        location.reload();
-                    }, 500) */
-                }}>agregar al carrito</button> }
+                }
+                <Menu usersGet={usersGet}/>
+                <div
+                    className={"container bg-dark text-light p-4 rounded-5 d-flex flex-wrap justify-content-center align-items-center mb-3 mt-3"}>
+                    <Link to={product.img}> <img src={product.img} className="rounded-5 card-hover cursor-pointer "
+                                                 alt="product"/></Link>
+                    <h2 className="text-center w-100"> {product.name}</h2>
+                    <p className=" w-100 text-center "><b>Precio: </b> ${product.price} COP</p><br/>
+                    <button type="button" className="btn bg-custom me-5 border-light-subtle">Comprar</button>
+                    {fineAdition ? <button className="btn border-light ml-5 bg-custom">agregado</button> :
+                        <button className="btn border-light ml-5 bg-custom" onClick={() => {
+                            if (localStorage.getItem('login') === "true") {
+                                fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`, {
+                                    method: 'PUT',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        compra: product._id,
+                                        cantidad: 1
+                                    })
+                                }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err));
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 500)
+                            } else {
+                                alert('Debes iniciar Sesion')
+                            }
 
-            </div>
-            <Footer />
-    </>: <Loader />
+                        }}>agregar al carrito</button>}
+
+                </div>
+                <Footer/>
+            </> : <Loader/>
     )
 }
 
-export default  Product
+export default Product
