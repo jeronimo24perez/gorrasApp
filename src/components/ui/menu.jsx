@@ -6,6 +6,7 @@ import {Link} from "react-router";
 import Login from "../features/login.jsx";
 import Search from "../features/search.jsx";
 import {useEffect, useState} from "react";
+import Loader from "./loader.jsx";
 
 const Menu = ({usersGet}) => {
     const [user, setUser] = useState();
@@ -13,10 +14,17 @@ const Menu = ({usersGet}) => {
 
     async function  fetching(){
         // eslint-disable-next-line react-hooks/rules-of-hooks
+        let data;
+        if(localStorage.getItem('user')){
+            data = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`);
+            return await data.json();
 
-        const data = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`);
+        }else{
+            data = null;
+            return data;
+        }
 
-        return await data.json();
+
     }
     useEffect(()=>{
         fetching().then(res => {
@@ -66,13 +74,7 @@ const Menu = ({usersGet}) => {
 
                             <ul className="navbar-nav d-flex w-50  align-items-center">
 
-                                <li className="nav-item px-2 w-100">
-                                    <a className="nav-link text-light"  data-bs-toggle="offcanvas"
-                                       data-bs-target="#offcanvasSearch"
-                                       aria-controls="offcanvasSearch" href="#" aria-label="Buscar">
-                                        <FaSearch /> <span>Buscar</span>
-                                    </a>
-                                </li>
+
                                 <li className="nav-item px-2 w-100">
                                     <Link className="nav-link text-light" to='/compras' aria-label="Carrito">
                                         {user.car.length >= 1? <><FaCircle size={11} className="notification" /> <FaCartShopping /></> : <FaCartShopping />}    <span >Carrito</span>
@@ -89,9 +91,6 @@ const Menu = ({usersGet}) => {
                                     </Link>
                                     {/*desplegable*/}
                                     <ul className="dropdown-menu dropdown-menu-end">
-                                        <li><a className="dropdown-item" href="#">Perfil</a></li>
-                                        <li><a className="dropdown-item" href="#">Mis Pedidos</a></li>
-                                        <li><hr className="dropdown-divider" /></li>
                                         <li>
                                             {/* Opción de cerrar sesión con estilo destacado */}
                                             <a className="dropdown-item text-danger" href="#" onClick={()=> {localStorage.setItem('login', 'false'); setTimeout(()=>{
@@ -107,7 +106,6 @@ const Menu = ({usersGet}) => {
                         </div>
                     </div>
                 </nav>
-                <Search />
             </>
         : <>
                 <nav className="navbar navbar-expand-lg bg-dark " data-bs-theme="dark">
@@ -154,13 +152,7 @@ const Menu = ({usersGet}) => {
                                         <FaUser className=""  /> <span>Iniciar  Sesion</span>
                                     </Link>
                                 </li>
-                                <li className="nav-item px-2 w-100">
-                                    <a className="nav-link text-light"  data-bs-toggle="offcanvas"
-                                       data-bs-target="#offcanvasSearch"
-                                       aria-controls="offcanvasSearch" href="#" aria-label="Buscar">
-                                        <FaSearch /> <span>Buscar</span>
-                                    </a>
-                                </li>
+
                                 <li className="nav-item px-2 w-100">
                                     <Link className="nav-link text-light" to='/compras' aria-label="Carrito">
                                         <FaCartShopping /> <span >Carrito</span>
@@ -170,7 +162,6 @@ const Menu = ({usersGet}) => {
                         </div>
                     </div>
                 </nav>
-                <Search />
                 <Login usersGet={usersGet} />
             </>
 :<></>

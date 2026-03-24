@@ -56,7 +56,7 @@ const Product = ({usersGet})=>{
                     }).then(res=>res.json()).then(res=> console.log(res)).catch(err => console.log(err));
                     setTimeout(()=>{
                         location.reload();
-                    }, 1000)
+                    }, 500)
                 }}>agregar al carrito</button> }
 
             </div>

@@ -1,10 +1,10 @@
 import Menu from "../ui/menu.jsx";
-import CardGrid from "../features/cardGrid.jsx";
 import {useEffect, useState} from "react";
 import CardList from "../features/cardList.jsx";
 import Footer from "../ui/footer.jsx";
 import {FaCartArrowDown} from "react-icons/fa";
 import {Link} from "react-router";
+import Loader from "../ui/loader.jsx";
 
 const Cart = ({usersGet})=>{
     const [data, setData] = useState(null)
@@ -56,9 +56,7 @@ const Cart = ({usersGet})=>{
             <Footer />
         </>
             :
-        <>
-
-        </>
+        <Loader />
     )
 }
 
