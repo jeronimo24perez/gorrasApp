@@ -9,13 +9,20 @@ const Product = ({usersGet})=>{
     const [state, setState] = useState(null);
     const [user, setUser] = useState(null);
     const {id} = useParams()
-    let algo;
+
     async function  fetching(){
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
+        let user;
         const data = await fetch(`https://backend-gorras-app.vercel.app/${id}`);
+        if(localStorage.getItem('user')){
+            user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
+            return {data: await data.json(), userMaker: await user.json()};
 
-        return {data: await data.json(), userMaker: await user.json()};
+        }else{
+            return {data: await data.json()};
+
+        }
+
     }
     useEffect(()=>{
         fetching().then(res => {
