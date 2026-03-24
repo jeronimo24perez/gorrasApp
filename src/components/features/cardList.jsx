@@ -38,7 +38,6 @@ const CardList =({img, price, name, id})=>{
                                     }}>+</button>
                                 </div>
                                 <button className="btn btn-link link-danger  btn-sm d-block mt-2 p-0" onClick={()=>{
-                                    console.log(localStorage.getItem('user'), id)
                                     fetch(`https://backend-gorras-app.vercel.app/cart/${id}`, {
                                         method: 'DELETE',
                                         headers: {

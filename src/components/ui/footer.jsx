@@ -33,14 +33,12 @@ const Footer = ()=>{
                         <div className="col-6 col-md-4 mb-4">
                             <h6 className="fw-bold">Síguenos</h6>
                             <div className="d-flex">
-                                {/* Usamos utilidades de Flex para alinear iconos */}
                                 <a href="#" className="btn btn-outline-primary me-2">Facebook</a>
                                 <a href="#" className="btn btn-outline-danger">Instagram</a>
                             </div>
                         </div>
                     </div>
 
-                    {/* Línea final de Copyright */}
                     <div className="d-flex flex-column text-light flex-sm-row justify-content-between py-4 my-4 border-top">
                         <p>© 2026 Tienda de Gorras, Inc. Todos los derechos reservados.</p>
                         <p>Pagina creada por Jeronimo Perez, usando Bootstrap y React para el frontend, nodeJS y Mongo para el backend.</p>

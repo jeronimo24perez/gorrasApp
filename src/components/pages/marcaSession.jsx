@@ -3,7 +3,6 @@ import Footer from "../ui/footer.jsx";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import CardGrid from "../features/cardGrid.jsx";
-import Card from "../ui/card.jsx";
 import Loader from "../ui/loader.jsx";
 
 const MarcaSession = ({usersGet})=>{

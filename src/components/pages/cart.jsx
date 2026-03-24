@@ -11,22 +11,36 @@ const Cart = ({usersGet})=>{
     const [state, setState] = useState(null)
     const [cart, setCart] = useState(null)
     async function db(){
-        const users = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem("user")}`);
-        return users.json();
+        if(localStorage.getItem('user')) {
+            const users = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem("user")}`);
+            return users.json();
+
+        }else{
+            return  null;
+        }
+
     }
     useEffect(() => {
         db().then(async res => {
             setData(res)
-            const productos = await Promise.all(
-                res.car.map(async e => {
-                    const r = await fetch(`https://backend-gorras-app.vercel.app/${e.productId}`)
-                    const cartList = await r.json()
+            let productos;
+            if(res ){
+                 productos = await Promise.all(
+                    res.car.map(async e => {
+                        const r = await fetch(`https://backend-gorras-app.vercel.app/${e.productId}`)
+                        const cartList = await r.json()
 
-                    return cartList
+                        return cartList
 
-                })
-            )
-            setCart(productos)
+                    })
+                )
+                setCart(productos)
+
+            }else{
+                productos = null;
+                setCart([])
+
+            }
             setState(true)
         })
 
@@ -36,7 +50,7 @@ const Cart = ({usersGet})=>{
         state?
         <>
             <Menu usersGet={usersGet} />
-            {cart.length > 0 ?
+            {cart.length > 0?
             <>
                 {cart.map(i => <CardList name={i.name} price={i.price} img={i.img} id={i._id} key={i._id} />)}
                 <div className="container d-flex justify-content-center">

@@ -3,8 +3,7 @@ import {useEffect, useState} from "react";
 import Home from "./components/pages/home.jsx";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {BrowserRouter, Route, Router, Routes} from "react-router";
-import Login from "./components/features/login.jsx";
+import {BrowserRouter, Route, Routes} from "react-router";
 import NotFound from "./components/pages/notFound.jsx";
 import Marcas from "./components/pages/marcas.jsx";
 import Product from "./components/pages/product.jsx";

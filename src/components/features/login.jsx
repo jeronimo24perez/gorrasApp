@@ -119,7 +119,7 @@ const Login = ({usersGet})=>{
                                                                 car: [],
                                                                 user_type: "client"
                                                             })
-                                                        }).then(res=>res.json()).then(res=> console.log(res)).catch(err => console.log(err));
+                                                        }).then(res=>res.json()).catch(err => console.log(err));
                                                         document.querySelector('.fail-create').innerHTML = 'cuenta creada, por favor inicie sesion';
                                                         window.location.reload()
 

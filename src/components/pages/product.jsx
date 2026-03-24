@@ -11,7 +11,6 @@ const Product = ({usersGet})=>{
     const {id} = useParams()
 
     async function  fetching(){
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         let user = null;
         const data = await fetch(`https://backend-gorras-app.vercel.app/${id}`);
         if(localStorage.getItem('user')){
@@ -69,7 +68,7 @@ const Product = ({usersGet})=>{
                                         compra: product._id,
                                         cantidad: 1
                                     })
-                                }).then(res => res.json()).then(res => console.log(res)).catch(err => console.log(err));
+                                }).then(res => res.json()).catch(err => console.log(err));
                                 setTimeout(() => {
                                     location.reload();
                                 }, 500)
