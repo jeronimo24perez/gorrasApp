@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+.sn-pro-sn-font {
+ font-family: "SN Pro", sans-serif;
+ font-optical-sizing: auto;
+ font-weight: 400;
+ font-style: normal;
+}
+:root{
+    --secondary: #F68F2B;
+}
+  *{
+    margin: 0;
+    padding: 0;
+}
+.bg-custom{
+    background-color: var(--secondary) !important;
+
+}
+.bg-custom:hover{
+    background-color: var(--bs-light) !important;
+    color: var(--bs-dark) !important;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.nav-link:hover{
+    color: var(--secondary) !important;
+}
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px); /* La eleva un poco */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
+
+}
+.notification{
+    position: absolute;
+    top: 45px;
+    right: 280px;
+}
