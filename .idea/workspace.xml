@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e4a0e40c-5d12-4b75-bb0c-feb0fbf9ca2b" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../../pyunal/conecta-4v2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/cart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/marcaSession.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/marcaSession.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/pages/product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/product.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/menu.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

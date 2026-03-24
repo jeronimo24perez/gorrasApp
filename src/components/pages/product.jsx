@@ -9,7 +9,7 @@ const Product = ({usersGet})=>{
     const [state, setState] = useState(null);
     const [user, setUser] = useState(null);
     const {id} = useParams()
-
+    let algo;
     async function  fetching(){
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
