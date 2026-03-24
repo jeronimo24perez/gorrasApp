@@ -12,10 +12,10 @@ const Product = ({usersGet})=>{
 
     async function  fetching(){
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        let user;
+        let user = null;
         const data = await fetch(`https://backend-gorras-app.vercel.app/${id}`);
         if(localStorage.getItem('user')){
-           // user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
+            user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
             return {data: await data.json(), userMaker: await user.json()};
 
         }else{
@@ -37,11 +37,18 @@ const Product = ({usersGet})=>{
         state?
 
         <>
-            {    user.car.map((item)=>{
-                if(item.productId === id){
-                    fineAdition = true;
-                }
-            })}
+            {user?
+                <>
+                    {user.car.map((item) => {
+                        if (item.productId === id) {
+                            fineAdition = true;
+                        }
+                    })}
+                </>
+            :
+                <></>
+
+            }
             
             <Menu usersGet={usersGet} />
             <div className={"container bg-dark text-light p-4 rounded-5 d-flex flex-wrap justify-content-center align-items-center mb-3 mt-3"} >

@@ -1,19 +1,15 @@
 import logo from '../../assets/logo-2.png'
-import {FaAccessibleIcon, FaCartPlus, FaCircle, FaSearch, FaUser, FaUserCircle} from "react-icons/fa";
+import { FaCircle,  FaUser } from "react-icons/fa";
 import {FaCartShopping} from "react-icons/fa6";
-import {MdAccountBox, MdAccountCircle, MdOutlineNotifications} from "react-icons/md";
 import {Link} from "react-router";
 import Login from "../features/login.jsx";
-import Search from "../features/search.jsx";
 import {useEffect, useState} from "react";
-import Loader from "./loader.jsx";
 
 const Menu = ({usersGet}) => {
     const [user, setUser] = useState();
     const [state, setState] = useState(null);
 
     async function  fetching(){
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         let data;
         if(localStorage.getItem('user')){
             data = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`);
@@ -89,11 +85,12 @@ const Menu = ({usersGet}) => {
 
                                         }} /> <span>Cuenta</span>
                                     </Link>
-                                    {/*desplegable*/}
                                     <ul className="dropdown-menu dropdown-menu-end">
                                         <li>
-                                            {/* Opción de cerrar sesión con estilo destacado */}
-                                            <a className="dropdown-item text-danger" href="#" onClick={()=> {localStorage.setItem('login', 'false'); setTimeout(()=>{
+                                            <a className="dropdown-item text-danger" href="#" onClick={()=> {
+                                                localStorage.setItem('login', 'false');
+                                                localStorage.removeItem('user');
+                                                setTimeout(()=>{
                                                 window.location.reload()
                                             }, 1000)}} >
                                                 Cerrar sesión
