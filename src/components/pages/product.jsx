@@ -15,7 +15,7 @@ const Product = ({usersGet})=>{
         let user;
         const data = await fetch(`https://backend-gorras-app.vercel.app/${id}`);
         if(localStorage.getItem('user')){
-            user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
+           // user = await fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`)
             return {data: await data.json(), userMaker: await user.json()};
 
         }else{
@@ -50,8 +50,7 @@ const Product = ({usersGet})=>{
                 <p className=" w-100 text-center "> <b>Precio: </b> ${product.price} COP</p><br/>
                 <button type="button" className="btn bg-custom me-5 border-light-subtle" >Comprar</button>
                 {fineAdition?  <button className="btn border-light ml-5 bg-custom">agregado</button> :  <button className="btn border-light ml-5 bg-custom" onClick={()=>{
-
-                    fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`, {
+                /*    fetch(`https://backend-gorras-app.vercel.app/users/${localStorage.getItem('user')}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -63,7 +62,7 @@ const Product = ({usersGet})=>{
                     }).then(res=>res.json()).then(res=> console.log(res)).catch(err => console.log(err));
                     setTimeout(()=>{
                         location.reload();
-                    }, 500)
+                    }, 500) */
                 }}>agregar al carrito</button> }
 
             </div>
