@@ -48,7 +48,7 @@ const Product = ({ usersGet }) => {
                 <Menu usersGet={usersGet} />
 
                 {/* Diseño de Grid: Imagen a la izquierda, Contenido a la derecha */}
-                <div className="container border-black shadow-lg bg-dark text-light p-5 rounded-5 mb-3 mt-3 shadow-lg">
+                <div className="container border-dark border-5 rounded-2 bg-dark text-light p-5  mb-3 mt-3 shadow-lg">
                     <div className="row align-items-center">
 
                         {/* Columna de la Imagen (6 de 12 unidades) */}
