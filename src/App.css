@@ -1,0 +1,132 @@
+@import "tailwindcss";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+:root{
+  --primary-color: #660010;
+  --tw-color: #460809;
+  --bg-main: #121212;
+  --secondary-bg: #1E1E1E;
+  --detail: #E5E5E5;
+}
+nav{
+  padding: .5rem;
+}
+
+.burger div{
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  margin: 5px;
+  transition: transform 0.3s ease;
+}
+#burger-open div{
+  background-color: var(--color-red-700);
+}
+#burger-open #bar-1{
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#burger-open #bar-2{
+  opacity: 0;
+}
+#burger-open #bar-3{
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.dropdown-menu{
+  padding: 2rem;
+}
+.banner{
+  padding: 1%;
+}
+.card-grid{
+  padding: 2%;
+  box-sizing: border-box;
+}
+.card-info{
+  padding: 2%;
+  box-sizing: border-box;
+}
+.card-button{
+  padding: 2%;
+  box-sizing: border-box;
+}
+.btn-cards{
+  padding: 2%;
+  box-sizing: border-box;
+}
+footer{
+  padding: 2%;
+  box-sizing: border-box;
+}
+.social-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+.social-icons svg{
+  width: 100%;
+  height: 100%;
+}
+.cap-container{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.selector-item{
+  margin-top: .5rem;
+  padding: 1rem;
+}
+.shop-buttons{
+  margin-top: 2rem;
+}
+.brand-grid{
+  padding: 2rem;
+  box-sizing: border-box;
+}
+form{
+  padding: 2rem;
+  margin: 4rem;
+  box-sizing: border-box;
+}
+form button{
+  padding: .6rem;
+}
+form h2{
+  margin-bottom: 1rem;
+}
+form input{
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  padding: .6rem;
+}
+form textarea{
+  padding: .6rem;
+}
+.logout{
+  padding: .4rem;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+@media (max-width: 640px) {
+  .cap-container{
+    padding-bottom: 2%;
+    box-sizing: border-box;
+  }
+}
+.cart-grid{
+  padding: 1%;
+  box-sizing: border-box;
+}
+.card-cart{
+  padding: 1%;
+}
+.btn-shop{
+  padding: 1%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

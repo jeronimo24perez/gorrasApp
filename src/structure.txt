@@ -1,0 +1,52 @@
+src/
+│
+├── caps/
+│   ├── components/
+│   │   ├── CapCard.tsx
+│   │   ├── CapList.tsx
+│   │   └── CapForm.tsx
+│   │
+│   ├── pages/
+│   │   ├── CapsPage.tsx
+│   │   └── CapDetailPage.tsx
+│   │
+│   ├── hooks/
+│   │   ├── useCaps.ts
+│   │   └── useCreateCap.ts
+│   │
+│   ├── services/
+│   │   └── capService.ts
+│   │
+│   ├── types/
+│   │   └── Cap.ts
+│   │
+│   └── state/ (opcional si usas Redux/Zustand)
+│       └── capSlice.ts
+│
+├── cart/
+│   ├── components/
+│   ├── hooks/
+│   ├── pages/
+│   └── state/
+│
+├── user/
+│   ├── components/
+│   ├── pages/
+│   └── hooks/
+│
+├── shared/
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Button.tsx
+│   │   └── Loader.tsx
+│   │
+│   ├── hooks/
+│   ├── utils/
+│   └── services/
+│       └── apiClient.ts
+│
+├── routes/
+│   └── AppRoutes.tsx
+│
+├── App.tsx
+└── main.tsx
