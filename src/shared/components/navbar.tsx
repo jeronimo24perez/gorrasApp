@@ -1,22 +1,19 @@
     import logo from '../../assets/logo2.png'
     import {CircleUserRound, Contact, House, ShoppingCart, Tags, User} from "lucide-react";
-    import {useEffect, useState} from "react";
+    import {useContext, useEffect, useState} from "react";
     import {Link, useLocation} from "react-router";
+    import {LoginContext} from "../../users/context/loginContext.tsx";
     const Navbar = () => {
         const [burger, setBurger] = useState<boolean>(false)
         const location = useLocation()
-        const [isLoged, setIsLoged] = useState<boolean>(false)
         const [logout, setLogout] = useState<boolean>(false)
+        const context = useContext(LoginContext)
         useEffect(() => {
-            const def = async()=>{
-                if(localStorage.getItem("auth") === "true"){
-                    setIsLoged(true)
-                }else{
-                    setIsLoged(false)
-                }
+            if(localStorage.getItem("auth")=== "true"){
+                context?.setLogged(true)
             }
-            def()
-        }, []);
+           
+        }, [context]);
         return(
             <>
                 <nav className="w-full   bg-stone-900 text-neutral-50 font-bold ">
@@ -43,7 +40,7 @@
                                 <Link to={'/carrito'} className="cursor-pointer  justify-self-end transition-colors duration-300 hover:text-red-700">
                                     <ShoppingCart />
                                 </Link>
-                                {isLoged?
+                                {context?.logged?
                                     <li onClick={()=> {
                                         if(logout){
                                             setLogout(false)
@@ -65,12 +62,13 @@
 
                 </nav>
                 {
-                    logout?  <div className="absolute logout right-7  bg-red-700 rounded-full text-neutral-50 p-2 cursor-pointer transition-colors duration-300 hover:bg-red-900">
+                    logout && context?.logged === true ?  <div className="absolute logout right-7  bg-red-700 rounded-full text-neutral-50 p-2 cursor-pointer transition-colors duration-300 hover:bg-red-900">
                         <p onClick={()=>{
                             localStorage.removeItem("auth")
                             localStorage.removeItem("id")
-                            setIsLoged(false)
                             setLogout(false)
+                             context?.setLogged(false)
+
                         }}>Cerrar Sesion</p>
                     </div>: <></>
                 }

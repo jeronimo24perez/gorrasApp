@@ -1,13 +1,15 @@
 import Navbar from "../../shared/components/navbar.tsx";
 import Footer from "../../shared/components/footer.tsx";
 import {useParams} from "react-router";
-import { useState} from "react";
+import {useContext, useState} from "react";
 import Loader from "../../shared/components/loader.tsx";
 import useCap from "../hooks/useCap.tsx";
 import {BaggageClaim, ShoppingCart} from "lucide-react";
 import {useCart} from "../../car/hooks/useCart.tsx";
 import type CartItem from "../../car/models/cartItem.tsx";
 import UseCacheSaver from "../../car/hooks/cacheSaver.ts";
+import {LoginContext} from "../../users/context/loginContext.tsx";
+import Swal from "sweetalert2";
 const CapProduct = () => {
     const {id} = useParams()
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -15,11 +17,22 @@ const CapProduct = () => {
     const cap = useCap({ setIsLoading, id: id || "" })
     const {items, setItems} = useCart()
     const itemExists = items.find(item => item.productId === id);
+    const context = useContext(LoginContext)
     UseCacheSaver()
 
 
     function addToCart() {
-
+        if(!context?.logged) {
+            Swal.fire({
+                title: "Error",
+                text: "Debes iniciar sesion para poder agregar productos al carrito",
+                icon: "error",
+                background: "#292524",
+                confirmButtonColor: "#C10007",
+                color: "#fff"
+            })
+            return;
+        }
         if (itemExists) {
             return;
 
@@ -62,7 +75,7 @@ const CapProduct = () => {
                         </div>
                         <div className="shop-buttons flex gap-4">
                             <button className="bg-red-700 transition-colors cursor-pointer hover:bg-red-950 w-5/12 btn-cards rounded-xl ">  Comprar</button>
-                            {itemExists? <>
+                            {itemExists && context?.logged? <>
                                     <button  className="bg-red-700 transition-colors cursor-pointer flex justify-cente hover:bg-red-950 w-6/12 btn-cards rounded-xl " onClick={removeFromCart} ><BaggageClaim /> Quitar del carrito</button>
                                 </>:
                                 <button  className="bg-red-700 transition-colors cursor-pointer flex justify-cente hover:bg-red-950 w-6/12 btn-cards rounded-xl " onClick={addToCart} ><ShoppingCart /> Agregar al carrito</button>

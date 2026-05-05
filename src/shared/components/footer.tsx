@@ -1,17 +1,19 @@
+import {Link} from "react-router";
+
 const Footer = () => {
     return(
         <footer className="w-full grid gap-20 grid-cols-3 bg-stone-900  text-neutral-400">
             <p>La mejor calidad en gorras urbanas y deportivas. Envíos a todo el país.</p>
             <ul className="grid gap-4">
-                <li className="transition-colors duration-300  hover:text-red-700 cursor-pointer">
+                <Link to={'/'} className="transition-colors duration-300  hover:text-red-700 cursor-pointer">
                     inicio
-                </li>
-                <li className="transition-colors duration-300  hover:text-red-700 cursor-pointer">
-                    Marca
-                </li>
-                <li className="transition-colors duration-300  hover:text-red-700 cursor-pointer">
+                </Link>
+                <Link to={'/marcas'} className="transition-colors duration-300  hover:text-red-700 cursor-pointer">
+                    Marcas
+                </Link>
+                <Link to={'/contacto'} className="transition-colors duration-300  hover:text-red-700 cursor-pointer">
                     Contacto
-                </li>
+                </Link>
             </ul>
             <div className="flex gap-4">
                 <button className="bg-rose-500 transition-colors cursor-pointer duration-300 hover:bg-rose-900 social-icons rounded-3xl   text-neutral-50">

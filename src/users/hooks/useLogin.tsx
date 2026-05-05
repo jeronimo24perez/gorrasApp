@@ -1,6 +1,8 @@
 import Swal from "sweetalert2";
 import type { LoginForm } from "../models/user.tsx";
 import { useNavigate } from "react-router";
+import {useContext} from "react";
+import {LoginContext} from "../context/loginContext.tsx";
 
 interface HookProps extends LoginForm {
     register: boolean;
@@ -8,6 +10,7 @@ interface HookProps extends LoginForm {
 
 export default function useLogin({ name, email, password, register }: HookProps) {
     const navigate = useNavigate()
+    const context = useContext(LoginContext)
 
     async function submit() {
         const emailValid = email.includes("@") && email.includes(".") && email.trim().length > 7
@@ -35,7 +38,7 @@ export default function useLogin({ name, email, password, register }: HookProps)
             const data = await res.json()
             localStorage.setItem("id", data._id)
             localStorage.setItem("auth", "true")
-
+            context?.setLogged(true)
             Swal.fire({
                 title: "Usuario registrado",
                 text: "Bienvenido a Caps Store",
@@ -77,6 +80,7 @@ export default function useLogin({ name, email, password, register }: HookProps)
 
                 localStorage.setItem("auth", "true")
                 localStorage.setItem("id", data._id)
+                context?.setLogged(true)
                 Swal.fire({
                     title: "Bienvenido de nuevo",
                     text: "Caps Store",
