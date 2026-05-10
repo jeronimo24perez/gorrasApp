@@ -1,8 +1,6 @@
 import type Cap from "../models/cap.ts";
 import {Link} from "react-router";
-import {useCart} from "../../car/hooks/useCart.tsx";
-import {useEffect, useState} from "react";
-import cacheSaver from "../../car/hooks/cacheSaver.ts";
+
 
 const Cards = ({id, name, price, image, brand_name}: Cap)=>{
 
