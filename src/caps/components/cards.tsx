@@ -5,18 +5,8 @@ import {useEffect, useState} from "react";
 import cacheSaver from "../../car/hooks/cacheSaver.ts";
 
 const Cards = ({id, name, price, image, brand_name}: Cap)=>{
-    cacheSaver()
-    const {items, setItems} = useCart()
-    const [exists, setExists] = useState<boolean>(false)
-    useEffect(() => {
-        const exister = async ()=>{
-            const itemFinder = items.find(item => item.product === id)
-            if(itemFinder){
-                setExists(true)
-            }
-        }
-        exister()
-    }, [id, items]);
+
+
     return(
         <>
             <Link to={`/cap/${id}`} className="card rounded-xl transition-transform duration-300  hover:-translate-y-3 bg-stone-800 text-neutral-50" id={id.toString()}>
