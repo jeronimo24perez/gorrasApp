@@ -1,4 +1,7 @@
-export default interface CartItem {
-    productId: string;
-    cantidad: number;
+
+export default interface CartItem{
+    "id": number ,
+    "cart": number ,
+    "product":  number,
+    "quantity":  number
 }

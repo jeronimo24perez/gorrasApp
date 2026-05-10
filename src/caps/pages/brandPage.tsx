@@ -10,7 +10,7 @@ const BrandPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     useEffect(() => {
         const brandsFetcher = async ()=>{
-            const response = await fetch('https://backend-gorras-app.vercel.app/marcas')
+            const response = await fetch('https://gorras-backend-django-1ui3.vercel.app/brands/')
             const data = await response.json()
             setBrands(data)
             setIsLoading(false)
@@ -23,7 +23,7 @@ const BrandPage = () => {
         <Navbar />
         <div className="brand-grid bg-neutral-950 grid grid-cols-1 md:grid-cols-2 gap-12">
             {brands.map(brand =>
-                <BrandCard marca={brand.marca} img={brand.img} _id={brand._id} key={brand._id} /> )}
+                <BrandCard brand={brand.brand} image={brand.image} id={brand.id} key={brand.id} /> )}
         </div>
         <Footer />
         </>

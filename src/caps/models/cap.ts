@@ -1,7 +1,8 @@
 export default interface Cap {
-    _id: string;
+    id: number;
     name: string;
-    price: string;
-    img: string;
-    marca: string;
+    price: number;
+    image: string;
+    brand: string;
+    brand_name: string;
 }

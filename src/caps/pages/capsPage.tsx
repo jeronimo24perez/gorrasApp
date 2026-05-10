@@ -9,12 +9,13 @@ const CapsPage = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true)
 const [caps, setCaps] = useState<Cap[]>([])
     useEffect(() => {
-        fetch("https://backend-gorras-app.vercel.app/")
-        .then(res => res.json())
-        .then(data => {
-            setCaps(data)
-            setIsLoading(false)
-        })
+        fetch('https://gorras-backend-django-1ui3.vercel.app/caps/').then(res => res.json())
+            .then(data => {
+                setCaps(data)
+                setIsLoading(false)
+            })
+
+
     }, []);
     return(
 
@@ -27,8 +28,8 @@ const [caps, setCaps] = useState<Cap[]>([])
                     </div>
                     <div
                         className="grid card-grid bg-neutral-950 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
-                        {caps.map(cap => <Cards key={cap._id} _id={cap._id} marca={cap.marca} name={cap.name} price={cap.price}
-                                                img={cap.img}/>)}
+                        {caps.map(cap => <Cards key={cap.id} id={cap.id} brand={cap.brand} brand_name={cap.brand_name} name={cap.name} price={cap.price}
+                                                image={cap.image}/>)}
                     </div>
                     <Footer/>
                 </>

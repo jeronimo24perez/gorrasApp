@@ -23,7 +23,7 @@ const BrandDetail = () => {
                     </div>
                 }
             {
-                brand.caps.map(cap => <Cards _id={cap._id} name={cap.name} price={cap.price} img={cap.img} marca={cap.marca} />)
+                brand.caps.map(cap => <Cards key={cap.id} id={cap.id} name={cap.name} price={cap.price} image={cap.image} brand={cap.brand} brand_name={cap.brand_name} />)
             }
             </div>
             <Footer />

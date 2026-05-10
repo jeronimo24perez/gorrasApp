@@ -65,7 +65,7 @@
                     logout && context?.logged === true ?  <div className="absolute logout right-7  bg-red-700 rounded-full text-neutral-50 p-2 cursor-pointer transition-colors duration-300 hover:bg-red-900">
                         <p onClick={()=>{
                             localStorage.removeItem("auth")
-                            localStorage.removeItem("id")
+                            localStorage.removeItem("Authorization")
                             setLogout(false)
                              context?.setLogged(false)
 

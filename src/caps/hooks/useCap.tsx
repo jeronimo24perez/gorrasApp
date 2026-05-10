@@ -12,7 +12,7 @@ export default function useCap({setIsLoading, id}:useCapProps) {
 
         const fetchData = async ()=> {
             try{
-                const fetchCap = await fetch(`https://backend-gorras-app.vercel.app/${id}`)
+                const fetchCap = await fetch(`https://gorras-backend-django-1ui3.vercel.app/caps/${id}/`)
                 const data = await fetchCap.json()
                 if(data === null){
                     console.error("No se puede acceder a la gorra")

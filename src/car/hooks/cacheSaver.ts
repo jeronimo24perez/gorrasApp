@@ -1,14 +1,29 @@
 import {  useEffect} from "react";
 import {useCart} from "./useCart.tsx";
+import type CartItem from "../models/cartItem.tsx";
 
 function UseCacheSaver() {
     const {setItems} = useCart()
     useEffect(() => {
-
-        const cartItems = localStorage.getItem("cartItems");
-        if (cartItems) {
-            setItems(JSON.parse(cartItems));
+        const cartFetcher = async () => {
+            const allCartItems = await fetch('https://gorras-backend-django-1ui3.vercel.app/cart/cart_item/',{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('Authorization') || ''
+                }
+            })
+            const data = await allCartItems.json()
+            const cartId = parseInt(localStorage.getItem('cartUser') || "0");
+            const filteredItems = data.filter((e: CartItem) => e.cart === cartId);
+            setItems(filteredItems)
+            return data
         }
-    }, []);
+
+        cartFetcher()
+
+
+
+
+    }, [setItems]);
 }
 export default UseCacheSaver

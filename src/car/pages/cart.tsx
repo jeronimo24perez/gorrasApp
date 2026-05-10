@@ -20,10 +20,9 @@ const Cart = () => {
     useEffect(() => {
         let products;
         const promiser = async ()=>{
-
             products = await Promise.all(
                 items.map(async (e)=>{
-                    const response = await fetch(`https://backend-gorras-app.vercel.app/${e.productId}`)
+                    const response = await fetch(`https://gorras-backend-django-1ui3.vercel.app/caps/${e.product}`)
 
                     return response.json()
                 })
@@ -39,15 +38,28 @@ const Cart = () => {
     return(
         isLoading? <Loader />:
         context?.logged? <>
-                <Navbar />
-                <div className="cart-grid bg-neutral-950 grid gap-12">
-                    {caps.map(item => <CardCart key={item._id}  _id={item._id} name={item.name} price={item.price} img={item.img} marca={item.marca} />)}
-                </div>
-                <div className="total-price bg-neutral-950 text-neutral-50 grid place-items-center">
-                    <button className="bg-red-700 transition-colors cursor-pointer hover:bg-red-950 w-5/12 btn-shop rounded-xl "> Finalizar compra</button>
-                </div>
+                {items.length < 1?
+                    <>
+                        <Navbar />
+                        <div className="h-screen bg-neutral-950 grid place-items-center">
+                            <Link to="/" className="text-red-700 underline hover:text-neutral-50  text-xl">No tienes nada en tu carrito, volver a la pagina principal</Link>
+                        </div>
+                    </>
 
-                <Footer />
+                    :
+                    <>
+                        <Navbar />
+                        <div className="cart-grid bg-neutral-950 grid gap-12">
+                            {caps.map(item => <CardCart key={item.id}  id={item.id} name={item.name} price={item.price} brand={item.brand} image={item.image} brand_name={item.brand_name} />)}
+                        </div>
+                        <div className="total-price bg-neutral-950 text-neutral-50 grid place-items-center">
+                            <button className="bg-red-700 transition-colors cursor-pointer hover:bg-red-950 w-5/12 btn-shop rounded-xl "> Finalizar compra</button>
+                        </div>
+
+                        <Footer />
+                    </>
+                }
+
             </>:
             <>
             <Navbar />

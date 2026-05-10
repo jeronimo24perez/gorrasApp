@@ -8,7 +8,7 @@ import UseLogin from "../hooks/useLogin.tsx";
 export const LoginFormComponent = () => {
     const [register, setRegister] = useState<boolean>(false)
     const [form, setForm] = useState<LoginForm>({
-        name: "",
+        username: "",
         email: "",
         password: "",
     })
@@ -16,7 +16,7 @@ export const LoginFormComponent = () => {
     const {submit} = UseLogin({
         email: form.email,
         password: form.password,
-        name: "name" in form ? form.name : "",
+        username: "username" in form ? form.username : "",
         register: register
     } )
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,8 +42,8 @@ export const LoginFormComponent = () => {
                                 <input
                                     type="text"  placeholder="Nombre Completo"
                                     className="backdrop-blur-md  rounded-full rounded-lgtext-white placeholder-gray-500 text-neutral-50 outline-none border-1 focus:border-red-500 transition"
-                                    id="name"
-                                    value={"name" in form ? form.name : ""}
+                                    id="username"
+                                    value={"username" in form ? form.username : ""}
                                     onChange={handleChange}
                                 />
                                 : <>  </>

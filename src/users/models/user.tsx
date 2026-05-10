@@ -3,7 +3,7 @@ interface carItem{
     cantidad: number
 }
 export interface LoginForm{
-    name: string
+    username: string
     email: string;
     password: string;
 }
