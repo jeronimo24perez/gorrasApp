@@ -3,6 +3,7 @@ import type { LoginForm } from "../models/user.tsx";
 import { useNavigate } from "react-router";
 import {useContext} from "react";
 import {LoginContext} from "../context/loginContext.tsx";
+import type CartSession from "../../car/models/cartSession.tsx";
 
 interface HookProps extends LoginForm {
     register: boolean;
@@ -152,14 +153,14 @@ export default function useLogin({ username, email, password, register }: HookPr
                     color: "#fff"
                 })
                 const cartSession = await fetch("https://gorras-backend-django-1ui3.vercel.app/cart/cart_session/", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" , "Authorization": `Token ${data.token}` },
-                    body: JSON.stringify({
-                        user: await profileData.message.id,
-                    })
+                    method: "GET",
+                    headers: { "Content-Type": "application/json" , "Authorization": `Token ${data.token}` }
                 })
                 const cartData = await cartSession.json()
-                localStorage.setItem("cartUser", cartData.id)
+               const userCartFinder = cartData.find((e:CartSession) => e.user === profileData.message.id)
+
+                localStorage.setItem("cartUser", userCartFinder?.id || "")
+
                 navigate(-1)
 
             }

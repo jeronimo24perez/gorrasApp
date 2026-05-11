@@ -15,7 +15,9 @@ function UseCacheSaver() {
             const data = await allCartItems.json()
             const cartId = parseInt(localStorage.getItem('cartUser') || "0");
             const filteredItems = data.filter((e: CartItem) => e.cart === cartId);
+            console.log(data)
             setItems(filteredItems)
+            console.log(filteredItems)
             return data
         }
 
@@ -24,6 +26,6 @@ function UseCacheSaver() {
 
 
 
-    }, [setItems]);
+    }, []);
 }
 export default UseCacheSaver

@@ -10,13 +10,11 @@ import {LoginContext} from "../../users/context/loginContext.tsx";
 import {Link, useLocation} from "react-router";
 
 const Cart = () => {
+    UseCacheSaver()
     const {items} = useCart()
     const [caps, setCaps] = useState<Cap[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
-    const auth = localStorage.getItem("auth")
-    useEffect(() => {
-
-    }, [auth]);
+   ;
     useEffect(() => {
         let products;
         const promiser = async ()=>{
@@ -33,7 +31,6 @@ const Cart = () => {
     promiser().then(()=> setIsLoading(false))
     }, [items]);
     const context = useContext(LoginContext)
-    UseCacheSaver()
     const location = useLocation()
     return(
         isLoading? <Loader />:
